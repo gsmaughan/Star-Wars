@@ -1,0 +1,179 @@
+body{
+	text-align: center;
+	background-image: url("../images/deathStar.jpg");
+	height: 100vh;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.95;
+
+}
+.characters{
+	float: left;
+	margin: 0px 20px 20px 20px;
+
+}
+#vader{
+	
+	height: 150px;
+	width: 150px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid red;
+    float: left;
+    margin: 20px;
+    color: white;
+    background-color: black;
+    vertical-align: text-top;
+}
+#vaderImg{
+	background-image: url("../images/vader.jpg");
+	height: 90px;
+	width: 130px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: center;
+}
+
+#dooku{
+	
+	height: 150px;
+	width: 150px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid red;
+    float: left;
+    margin: 20px;
+    color: white;
+    background-color: #374049;
+    vertical-align: text-top;
+}
+
+#dookuImg{
+	background-image: url("../images/dooku.jpg");
+	height: 90px;
+	width: 130px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: center;
+}
+
+
+#mace{
+	
+	height: 150px;
+	width: 150px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid #cc00cc;
+    float: left;
+    margin: 20px;
+    color: black;
+    vertical-align: text-top;
+}
+
+#maceImg{
+	background-image: url("../images/mace.jpg");
+	height: 90px;
+	width: 130px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: center;
+}
+
+
+
+#yoda{
+	
+	height: 150px;
+	width: 150px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid white;
+    float: left;
+    margin: 20px;
+    color: black;
+    background-color: #9fff80;
+    vertical-align: text-top;
+}
+
+#yodaImg{
+	background-image: url("../images/yoda.jpg");
+	height: 90px;
+	width: 130px;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: center;
+    color: #66ff33;
+}
+
+#name{
+	font-size: 15px;
+	color: black;
+}
+/*.row{
+	margin: 20px;
+	border: 3px solid yellow;
+
+}*/
+/*#characters{
+	margin: 20px;
+	text-align: left;
+	color: blue;
+	font-size: 25px;
+	border: 3px solid blue;
+
+}*/
+
+#topRow{
+	text-align: left;
+	color: white;
+
+}
+#bottomRow{
+	border: 3px solid white;
+	height: 200px;
+	width: 760px;
+
+}
+
+.enemy{
+	border: 3px solid white;
+	height: 200px;
+	width: 760px;
+	margin: 20px;
+}
+
+#selectEnemy{
+	text-align: left;
+	color: white;
+	font-size: 25px;
+	margin: 20px;
+	border-color: 3px solid white;
+}
+p{
+	height: 5px;
+}
+
+#defender{
+	border: 3px solid white;
+}
+
+#column1{
+	height: 300px;
+	border: 3px solid red;
+}
+#column2{
+	height: 300px;
+	border: 3px solid blue;
+}
+
+#column1{}
