@@ -176,4 +176,27 @@ p{
 	border: 3px solid blue;
 }
 
-#column1{}
+#defender{
+	border: 3px solid white;
+	height: 200px;
+	width: 760px;
+	margin: 20px;
+}
+#defenderTitle{
+	text-align: left;
+	color: white;
+	font-size: 25px;
+	margin: 20px;
+	border-color: 3px solid white;
+}
+#attack{
+	height: 100px;
+	width: 150px;
+	background-color: gold;
+	color: black;
+	font-weight: bold;
+	font-size: 25px;
+	float: left;
+	margin: 50px;
+	border-color: 3px solid white;
+}
