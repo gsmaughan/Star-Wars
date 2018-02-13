@@ -19,6 +19,8 @@ var dookuAttackPower = 8;
 var yodaAttackPower = 9;
 var maceAttackPower = 12;
 
+var attackButton;
+
 
 
 	$("#vader").on("click", function(){
@@ -195,28 +197,65 @@ var maceAttackPower = 12;
 
 		if(defender == "dooku"){
 			console.log(defender + " is the defender on line 198");
-			$('.container').append('<div id="defenderTitle">DEFENDER</div>');
-			$('.container').append('<div id="defender"></div>');
-			$("#defender").append(dookuButton);
-		}
+			if(defenderSelected > 1){
+
+				$("#defender").append(dookuButton);
+				fight();
+				
+			}
+			else{
+				$('.container').append('<div id="defenderTitle">DEFENDER</div>');
+				$('.container').append('<div id="defender"></div>');
+				$("#defender").append(dookuButton);
+				}
+			}
+			
 		if(defender == "vader"){
 			console.log(defender + " is the defender on line 198");
-			$('.container').append('<div id="defenderTitle">DEFENDER</div>');
-			$('.container').append('<div id="defender"></div>');
-			$("#defender").append(vaderButton);
+			if(defenderSelected > 1){
+
+				$("#defender").append(vaderButton);
+				fight();
+				
+			}
+			else{
+				$('.container').append('<div id="defenderTitle">DEFENDER</div>');
+				$('.container').append('<div id="defender"></div>');
+				$("#defender").append(vaderButton);
+			}
+			
 		}
 		if(defender == "yoda"){
 			console.log(defender + " is the defender on line 198");
-			$('.container').append('<div id="defenderTitle">DEFENDER</div>');
-			$('.container').append('<div id="defender"></div>');
-			$("#defender").append(yodaButton);
-		}
+			if(defenderSelected > 1){
+
+				$("#defender").append(yodaButton);
+				fight();
+				
+			}
+			else{
+				$('.container').append('<div id="defenderTitle">DEFENDER</div>');
+				$('.container').append('<div id="defender"></div>');
+				$("#defender").append(yodaButton);
+				}
+			}
+			
 		if(defender == "mace"){
 			console.log(defender + " is the defender on line 198");
-			$('.container').append('<div id="defenderTitle">DEFENDER</div>');
-			$('.container').append('<div id="defender"></div>');
-			$("#defender").append(maceButton);
-		}
+			if(defenderSelected > 1){
+
+				$("#defender").append(maceButton);
+				fight();
+				
+			}
+			else{
+				$('.container').append('<div id="defenderTitle">DEFENDER</div>');
+				$('.container').append('<div id="defender"></div>');
+				$("#defender").append(maceButton);
+				}
+
+			}
+			
 
 		defenderSelected = 1;
 		ready();
@@ -235,17 +274,23 @@ var maceAttackPower = 12;
 
 	function fight(){
 			if(character == "vader" && defender == "dooku"){
-				
+				// if(defenderSelected >= 2){
+					
+				// }
 				dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
 				vaderAttackPower = vaderAttackPower + 10;
 					if (dookuHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
 						console.log("Vader health points: " + vaderHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
 				vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
-				
+				$("#vaderHP").text(vaderHealthPoints);
+				$("#dookuHP").text(dookuHealthPoints);
 
 				
 				console.log("Vader Health Points: " + vaderHealthPoints);
@@ -257,15 +302,19 @@ var maceAttackPower = 12;
 				yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
 				vaderAttackPower = vaderAttackPower + 10;
 					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
 						console.log("__________________");
 						console.log("Vader Attack Power: " + vaderAttackPower);
 						console.log("Vader health points: " + vaderHealthPoints);
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
-				
+				$("#vaderHP").text(vaderHealthPoints);
+				$("#yodaHP").text(yodaHealthPoints);
 
 				console.log("Vader Health Points: " + vaderHealthPoints);
 				console.log("Yoda Health Points: " + yodaHealthPoints);
@@ -276,13 +325,17 @@ var maceAttackPower = 12;
 				maceHealthPoints = maceHealthPoints - vaderAttackPower;
 				vaderAttackPower = vaderAttackPower + 10;
 					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
 						console.log("Vader health points: " + vaderHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				vaderHealthPoints = vaderHealthPoints - maceAttackPower;
-				
+				$("#vaderHP").text(vaderHealthPoints);
+				$("#maceHP").text(maceHealthPoints);
 
 				console.log("Vader Health Points: " + vaderHealthPoints);
 				console.log("Mace Windu Health Points: " + maceHealthPoints);
@@ -293,14 +346,18 @@ var maceAttackPower = 12;
 				vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
 				dookuAttackPower = dookuAttackPower + 8;
 					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
 						console.log("Dooku health points: " + dookuHealthPoints)
 						console.log("Dooku Attack Power: " + dookuAttackPower);
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
-				
+				$("#dookuHP").text(dookuHealthPoints);
+				$("#vaderHP").text(vaderHealthPoints);
 
 				
 				console.log("dooku Health Points: " + dookuHealthPoints);
@@ -312,14 +369,18 @@ var maceAttackPower = 12;
 				yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
 				dookuAttackPower = dookuAttackPower + 8;
 					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
 						console.log("Dooku health points: " + dookuHealthPoints)
 						console.log("Dooku Attack Power: " + dookuAttackPower);
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
-				
+				$("#dookuHP").text(dookuHealthPoints);
+				$("#yodaHP").text(yodaHealthPoints);
 
 				
 				console.log("dooku Health Points: " + dookuHealthPoints);
@@ -331,14 +392,18 @@ var maceAttackPower = 12;
 				maceHealthPoints = maceHealthPoints - dookuAttackPower;
 				dookuAttackPower = dookuAttackPower + 8;
 					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
 						console.log("Dooku health points: " + dookuHealthPoints)
 						console.log("Dooku Attack Power: " + dookuAttackPower);
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				dookuHealthPoints = dookuHealthPoints - maceAttackPower;
-				
+				$("#dookuHP").text(dookuHealthPoints);
+				$("#maceHP").text(maceHealthPoints);
 
 				
 				console.log("dooku Health Points: " + dookuHealthPoints);
@@ -350,13 +415,17 @@ var maceAttackPower = 12;
 				vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
 				yodaAttackPower = yodaAttackPower + 9;
 					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
 						console.log("Yoda health points: " + yodaHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
-				
+				$("#yodaHP").text(yodaHealthPoints);
+				$("#vaderHP").text(vaderHealthPoints);
 
 				
 				console.log("Yoda Health Points: " + yodaHealthPoints);
@@ -368,13 +437,17 @@ var maceAttackPower = 12;
 				dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
 				yodaAttackPower = yodaAttackPower + 9;
 					if (dookuHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
 						console.log("Yoda health points: " + yodaHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
-				
+				$("#yodaHP").text(yodaHealthPoints);
+				$("#dookuHP").text(dookuHealthPoints);
 
 				
 				console.log("Yoda Health Points: " + yodaHealthPoints);
@@ -386,13 +459,18 @@ var maceAttackPower = 12;
 				maceHealthPoints = maceHealthPoints - yodaAttackPower;
 				yodaAttackPower = yodaAttackPower + 9;
 					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
 						console.log("Yoda health points: " + yodaHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				yodaHealthPoints = yodaHealthPoints - maceAttackPower;
-				
+				$("#yodaHP").text(yodaHealthPoints);
+				$("#maceHP").text(maceHealthPoints);
+
 				console.log("Yoda Health Points: " + yodaHealthPoints);
 				console.log("mace Health Points: " + maceHealthPoints);
 				console.log("Yoda Attack Power: " + yodaAttackPower);
@@ -402,13 +480,17 @@ var maceAttackPower = 12;
 				vaderHealthPoints = vaderHealthPoints - maceAttackPower;
 				maceAttackPower = maceAttackPower + 9;
 					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
 						console.log("mace health points: " + maceHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				maceHealthPoints = maceHealthPoints - vaderAttackPower;
-				
+				$("#maceHP").text(maceHealthPoints);
+				$("#vaderHP").text(vaderHealthPoints);
 
 				
 				console.log("Mace Health Points: " + maceHealthPoints);
@@ -420,15 +502,18 @@ var maceAttackPower = 12;
 				dookuHealthPoints = dookuHealthPoints - maceAttackPower;
 				maceAttackPower = maceAttackPower + 9;
 					if (dookuHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
 						console.log("mace health points: " + maceHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				maceHealthPoints = maceHealthPoints - dookuAttackPower;
-				
+				$("#maceHP").text(maceHealthPoints);
+				$("#dookuHP").text(dookuHealthPoints);
 
-				
 				console.log("Mace Health Points: " + maceHealthPoints);
 				console.log("Dooku Health Points: " + dookuHealthPoints);
 				console.log("Mace Attack Power: " + maceAttackPower);
@@ -438,15 +523,18 @@ var maceAttackPower = 12;
 				yodaHealthPoints = yodaHealthPoints - maceAttackPower;
 				maceAttackPower = maceAttackPower + 9;
 					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
 						console.log("mace health points: " + maceHealthPoints)
 						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						attackButton = $("#attack").detach();
 						return;
 					}
 
 				maceHealthPoints = maceHealthPoints - yodaAttackPower;
-				
+				$("#maceHP").text(maceHealthPoints);
+				$("#yodaHP").text(yodaHealthPoints);
 
-				
 				console.log("Mace Health Points: " + maceHealthPoints);
 				console.log("Yoda Health Points: " + yodaHealthPoints);
 				console.log("Mace Attack Power: " + maceAttackPower);
