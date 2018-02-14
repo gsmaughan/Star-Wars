@@ -274,11 +274,27 @@ var attackButton;
 
 	function fight(){
 			if(character == "vader" && defender == "dooku"){
-				// if(defenderSelected >= 2){
+				if(defenderSelected >= 2){
+					vaderAttackPower = vaderAttackPower + 10;
+					if (dookuHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
+						console.log("Vader health points: " + vaderHealthPoints)
+						console.log(defender + " is dead.");
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
 					
-				// }
-				dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
-				vaderAttackPower = vaderAttackPower + 10;
+				
+					dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+
+					vaderAttackPower = vaderAttackPower + 10;
 					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
 						console.log("Vader health points: " + vaderHealthPoints)
@@ -288,256 +304,337 @@ var attackButton;
 						return;
 					}
 
-				vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
-				$("#vaderHP").text(vaderHealthPoints);
-				$("#dookuHP").text(dookuHealthPoints);
-
+				}
 				
-				console.log("Vader Health Points: " + vaderHealthPoints);
-				console.log("Dooku Health Points: " + dookuHealthPoints);
-				console.log("Vader Attack Power: " + vaderAttackPower);
 			}
 			if(character == "vader" && defender == "yoda"){
-				
-				yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
-				vaderAttackPower = vaderAttackPower + 10;
+				if(defenderSelected >= 2){
+					vaderAttackPower = vaderAttackPower + 10;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
-						console.log("__________________");
-						console.log("Vader Attack Power: " + vaderAttackPower);
-						console.log("Vader health points: " + vaderHealthPoints);
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
+					
+				
+					yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+
+					vaderAttackPower = vaderAttackPower + 10;
+					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
-				$("#vaderHP").text(vaderHealthPoints);
-				$("#yodaHP").text(yodaHealthPoints);
-
-				console.log("Vader Health Points: " + vaderHealthPoints);
-				console.log("Yoda Health Points: " + yodaHealthPoints);
-				console.log("Vader Attack Power: " + vaderAttackPower);
+				}
 			}
 			if(character == "vader" && defender == "mace"){
 
-				maceHealthPoints = maceHealthPoints - vaderAttackPower;
-				vaderAttackPower = vaderAttackPower + 10;
+				if(defenderSelected >= 2){
+					vaderAttackPower = vaderAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
-						console.log("Vader health points: " + vaderHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					vaderHealthPoints = vaderHealthPoints - maceAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
+					
+				
+					maceHealthPoints = maceHealthPoints - vaderAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+
+					vaderAttackPower = vaderAttackPower + 10;
+					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				vaderHealthPoints = vaderHealthPoints - maceAttackPower;
-				$("#vaderHP").text(vaderHealthPoints);
-				$("#maceHP").text(maceHealthPoints);
-
-				console.log("Vader Health Points: " + vaderHealthPoints);
-				console.log("Mace Windu Health Points: " + maceHealthPoints);
-				console.log("Vader Attack Power: " + vaderAttackPower);
+				}
 			}
 			if(character == "dooku" && defender == "vader"){
 				
-				vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
-				dookuAttackPower = dookuAttackPower + 8;
+				if(defenderSelected >= 2){
+					dookuAttackPower = dookuAttackPower + 10;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
-						console.log("Dooku health points: " + dookuHealthPoints)
-						console.log("Dooku Attack Power: " + dookuAttackPower);
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+					
+				
+					vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
+
+					dookuAttackPower = dookuAttackPower + 10;
+					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
-				$("#dookuHP").text(dookuHealthPoints);
-				$("#vaderHP").text(vaderHealthPoints);
-
-				
-				console.log("dooku Health Points: " + dookuHealthPoints);
-				console.log("vader Health Points: " + vaderHealthPoints);
-				console.log("dooku Attack Power: " + dookuAttackPower);
+				}
 			}
 			if(character == "dooku" && defender == "yoda"){
 				
-				yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
-				dookuAttackPower = dookuAttackPower + 8;
+				if(defenderSelected >= 2){
+					dookuAttackPower = dookuAttackPower + 10;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
-						console.log("Dooku health points: " + dookuHealthPoints)
-						console.log("Dooku Attack Power: " + dookuAttackPower);
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+					
+				
+					yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+
+					dookuAttackPower = dookuAttackPower + 10;
+					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
-				$("#dookuHP").text(dookuHealthPoints);
-				$("#yodaHP").text(yodaHealthPoints);
-
-				
-				console.log("dooku Health Points: " + dookuHealthPoints);
-				console.log("yoda Health Points: " + yodaHealthPoints);
-				console.log("dooku Attack Power: " + dookuAttackPower);
+				}
 			}
 			if(character == "dooku" && defender == "mace"){
 				
-				maceHealthPoints = maceHealthPoints - dookuAttackPower;
-				dookuAttackPower = dookuAttackPower + 8;
+				if(defenderSelected >= 2){
+					dookuAttackPower = dookuAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
-						console.log("Dooku health points: " + dookuHealthPoints)
-						console.log("Dooku Attack Power: " + dookuAttackPower);
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					dookuHealthPoints = dookuHealthPoints - maceAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+					
+				
+					maceHealthPoints = maceHealthPoints - dookuAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+
+					dookuAttackPower = dookuAttackPower + 10;
+					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				dookuHealthPoints = dookuHealthPoints - maceAttackPower;
-				$("#dookuHP").text(dookuHealthPoints);
-				$("#maceHP").text(maceHealthPoints);
-
-				
-				console.log("dooku Health Points: " + dookuHealthPoints);
-				console.log("Mace Health Points: " + maceHealthPoints);
-				console.log("dooku Attack Power: " + dookuAttackPower);
+				}
 			}
 			if(character == "yoda" && defender == "vader"){
 				
-				vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
-				yodaAttackPower = yodaAttackPower + 9;
+				if(defenderSelected >= 2){
+					yodaAttackPower = yodaAttackPower + 10;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
-						console.log("Yoda health points: " + yodaHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+					
+				
+					vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
+
+					yodaAttackPower = yodaAttackPower + 10;
+					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
-				$("#yodaHP").text(yodaHealthPoints);
-				$("#vaderHP").text(vaderHealthPoints);
-
-				
-				console.log("Yoda Health Points: " + yodaHealthPoints);
-				console.log("vader Health Points: " + vaderHealthPoints);
-				console.log("Yoda Attack Power: " + yodaAttackPower);
+				}
 			}
 			if(character == "yoda" && defender == "dooku"){
 				
-				dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
-				yodaAttackPower = yodaAttackPower + 9;
+				if(defenderSelected >= 2){
+					yodaAttackPower = yodaAttackPower + 10;
 					if (dookuHealthPoints <= 0){
-						dookuButton = $("#dooku").detach();
-						console.log("Yoda health points: " + yodaHealthPoints)
-						console.log(defender + " is dead.");
+						vaderButton = $("#vader").detach();
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+					
+				
+					dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+
+					yodaAttackPower = yodaAttackPower + 10;
+					if (vaderHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
-				$("#yodaHP").text(yodaHealthPoints);
-				$("#dookuHP").text(dookuHealthPoints);
-
-				
-				console.log("Yoda Health Points: " + yodaHealthPoints);
-				console.log("dooku Health Points: " + dookuHealthPoints);
-				console.log("Yoda Attack Power: " + yodaAttackPower);
+				}
 			}
 			if(character == "yoda" && defender == "mace"){
 				
-				maceHealthPoints = maceHealthPoints - yodaAttackPower;
-				yodaAttackPower = yodaAttackPower + 9;
+				if(defenderSelected >= 2){
+					yodaAttackPower = yodaAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
-						console.log("Yoda health points: " + yodaHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					yodaHealthPoints = yodaHealthPoints - maceAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+					
+				
+					maceHealthPoints = maceHealthPoints - yodaAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+
+					yodaAttackPower = yodaAttackPower + 10;
+					if (maceHealthPoints <= 0){
+						maceButton = $("#mace").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				yodaHealthPoints = yodaHealthPoints - maceAttackPower;
-				$("#yodaHP").text(yodaHealthPoints);
-				$("#maceHP").text(maceHealthPoints);
-
-				console.log("Yoda Health Points: " + yodaHealthPoints);
-				console.log("mace Health Points: " + maceHealthPoints);
-				console.log("Yoda Attack Power: " + yodaAttackPower);
+				}
 			}
 			if(character == "mace" && defender == "vader"){
 				
-				vaderHealthPoints = vaderHealthPoints - maceAttackPower;
-				maceAttackPower = maceAttackPower + 9;
+				if(defenderSelected >= 2){
+					maceAttackPower = maceAttackPower + 12;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
-						console.log("mace health points: " + maceHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					maceHealthPoints = maceHealthPoints - vaderAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+					
+				
+					vaderHealthPoints = vaderHealthPoints - maceAttackPower;
+					$("#vaderHP").text(vaderHealthPoints);
+
+					maceAttackPower = maceAttackPower + 12;
+					if (vaderHealthPoints <= 0){
+						vaderButton = $("#vader").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				maceHealthPoints = maceHealthPoints - vaderAttackPower;
-				$("#maceHP").text(maceHealthPoints);
-				$("#vaderHP").text(vaderHealthPoints);
-
-				
-				console.log("Mace Health Points: " + maceHealthPoints);
-				console.log("vader Health Points: " + vaderHealthPoints);
-				console.log("Mace Attack Power: " + maceAttackPower);
+				}
 			}
 			if(character == "mace" && defender == "dooku"){
 				
-				dookuHealthPoints = dookuHealthPoints - maceAttackPower;
-				maceAttackPower = maceAttackPower + 9;
+				if(defenderSelected >= 2){
+					maceAttackPower = maceAttackPower + 12;
 					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
-						console.log("mace health points: " + maceHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					maceHealthPoints = maceHealthPoints - dookuAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+					
+				
+					dookuHealthPoints = dookuHealthPoints - maceAttackPower;
+					$("#dookuHP").text(dookuHealthPoints);
+
+					maceAttackPower = maceAttackPower + 12;
+					if (dookuHealthPoints <= 0){
+						dookuButton = $("#dooku").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				maceHealthPoints = maceHealthPoints - dookuAttackPower;
-				$("#maceHP").text(maceHealthPoints);
-				$("#dookuHP").text(dookuHealthPoints);
-
-				console.log("Mace Health Points: " + maceHealthPoints);
-				console.log("Dooku Health Points: " + dookuHealthPoints);
-				console.log("Mace Attack Power: " + maceAttackPower);
+				}
 			}
 			if(character == "mace" && defender == "yoda"){
 				
-				yodaHealthPoints = yodaHealthPoints - maceAttackPower;
-				maceAttackPower = maceAttackPower + 9;
+				if(defenderSelected >= 2){
+					maceAttackPower = maceAttackPower + 12;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
-						console.log("mace health points: " + maceHealthPoints)
-						console.log(defender + " is dead.");
 						defenderSelected = 2;
-						attackButton = $("#attack").detach();
+						 attackButton = $("#attack").detach();
+						return;
+						}
+					}
+
+				else{
+					maceHealthPoints = maceHealthPoints - yodaAttackPower;
+					$("#maceHP").text(maceHealthPoints);
+					
+				
+					yodaHealthPoints = yodaHealthPoints - maceAttackPower;
+					$("#yodaHP").text(yodaHealthPoints);
+
+					maceAttackPower = maceAttackPower + 12;
+					if (yodaHealthPoints <= 0){
+						yodaButton = $("#yoda").detach();
+						defenderSelected = 2;
+						 attackButton = $("#attack").detach();
 						return;
 					}
 
-				maceHealthPoints = maceHealthPoints - yodaAttackPower;
-				$("#maceHP").text(maceHealthPoints);
-				$("#yodaHP").text(yodaHealthPoints);
-
-				console.log("Mace Health Points: " + maceHealthPoints);
-				console.log("Yoda Health Points: " + yodaHealthPoints);
-				console.log("Mace Attack Power: " + maceAttackPower);
+				}
 			}
 
 
