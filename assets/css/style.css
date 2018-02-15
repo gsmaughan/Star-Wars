@@ -200,3 +200,12 @@ p{
 	margin: 50px;
 	border-color: 3px solid white;
 }
+#info{
+	height: 100px;
+	width: 300px;
+	float: right;
+	color: gold;
+	font-size: 25px;
+	margin: 50px 10px 50px;
+	white-space:pre-wrap;
+}

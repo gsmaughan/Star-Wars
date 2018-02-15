@@ -9,9 +9,9 @@ var vaderButton;
 var maceButton;
 var yodaButton;
 
-var dookuHealthPoints = 110;
+var dookuHealthPoints = 130;
 var vaderHealthPoints = 125;
-var yodaHealthPoints = 100;
+var yodaHealthPoints = 135;
 var maceHealthPoints = 120;
 
 var vaderAttackPower = 10;
@@ -26,13 +26,13 @@ var attackButton;
 	$("#vader").on("click", function(){
 		
 		if(select == 0){ //choose character
-			character = "vader";
+			character = "Darth Vader";
 			selectCharacter(character);
 			// select = 1;
 
 		}
 		if(select == 1){ //choose enemy
-			defender = "vader";
+			defender = "Darth Vader";
 				if(character == defender){
 					return;
 			}
@@ -49,12 +49,12 @@ var attackButton;
 	$("#dooku").on("click", function(){
 		
 		if(select == 0){
-			character = "dooku";
+			character = "Count Dooku";
 		selectCharacter(character);
 		// select = 1;
 		}
 		if(select == 1){
-			defender = "dooku";
+			defender = "Count Dooku";
 			console.log(defender);
 		
 			if(character == defender){
@@ -73,12 +73,12 @@ var attackButton;
 	});
 	$("#yoda").on("click", function(){
 		if(select == 0){
-			character = "yoda";
+			character = "Yoda";
 		selectCharacter(character);
 		// select = 1;
 		}
 		if(select == 1){
-			defender = "yoda";
+			defender = "Yoda";
 			console.log(defender);
 		
 			if(character == defender){
@@ -97,11 +97,11 @@ var attackButton;
 	$("#mace").on("click", function(){
 		
 		if(select == 0){
-				character = "mace";
+				character = "Mace Windu";
 		selectCharacter(character);
 		}
 		if(select == 1){
-			defender = "mace";
+			defender = "Mace Windu";
 			if(character == defender){
 				return;
 		}
@@ -123,16 +123,16 @@ var attackButton;
 	function selectCharacter(){  //function for moving potential enemies into a new div
 		console.log(character + " is the character");
 
-		if(character == "vader" && select == 0){ // vader if character
+		if(character == "Darth Vader" && select == 0){ // vader if character
 
 			dookuButton = $("#dooku").detach();
 			yodaButton = $("#yoda").detach();
 			maceButton = $("#mace").detach();
-			$('.container').append('<div id="selectEnemy">SELECT ENEMY</div>'); //make a SELECT ENEMY header
-			
-			
-			$('.container').append('<div class="enemy"></div>');  //make a new border for enemies
 
+			if(defenderSelected < 2){
+			$('.container').append('<div id="selectEnemy">SELECT ENEMY</div>'); //make a SELECT ENEMY header
+			$('.container').append('<div class="enemy"></div>');  //make a new border for enemies
+		}
 			$(".enemy").append(dookuButton);
 			
 			$(".enemy").append(yodaButton);
@@ -140,7 +140,7 @@ var attackButton;
 			$(".enemy").append(maceButton);
 
 		}
-		if(character == "dooku" && select == 0){ //dooku if character
+		if(character == "Count Dooku" && select == 0){ //dooku if character
 			vaderButton = $("#vader").detach();
 			yodaButton = $("#yoda").detach();
 			maceButton = $("#mace").detach();
@@ -155,7 +155,7 @@ var attackButton;
 			$(".enemy").append(maceButton);
 			
 		}
-		if(character == "yoda" && select ==0){ //yoda if character
+		if(character == "Yoda" && select ==0){ //yoda if character
 
 			vaderButton = $("#vader").detach();
 			dookuButton = $("#dooku").detach();
@@ -172,7 +172,7 @@ var attackButton;
 			
 			console.log("select character works");
 		}
-		if(character == "mace" && select == 0){ //mace if character
+		if(character == "Mace Windu" && select == 0){ //mace if character
 			vaderButton = $("#vader").detach();
 			yodaButton = $("#yoda").detach();
 			dookuButton = $("#dooku").detach();
@@ -187,17 +187,14 @@ var attackButton;
 			$(".enemy").append(yodaButton);
 			
 		}
-		select = 1;
+		select++;
 	} // end selectCharacter function
 
 	function chooseDefender(defender){
-		if(defenderSelected == 1){
-			return;
-		}
 
-		if(defender == "dooku"){
+		if(defender == "Count Dooku"){
 			console.log(defender + " is the defender on line 198");
-			if(defenderSelected > 1){
+			if(defenderSelected >= 1){
 
 				$("#defender").append(dookuButton);
 				fight();
@@ -210,7 +207,7 @@ var attackButton;
 				}
 			}
 			
-		if(defender == "vader"){
+		if(defender == "Darth Vader"){
 			console.log(defender + " is the defender on line 198");
 			if(defenderSelected > 1){
 
@@ -225,7 +222,7 @@ var attackButton;
 			}
 			
 		}
-		if(defender == "yoda"){
+		if(defender == "Yoda"){
 			console.log(defender + " is the defender on line 198");
 			if(defenderSelected > 1){
 
@@ -240,7 +237,7 @@ var attackButton;
 				}
 			}
 			
-		if(defender == "mace"){
+		if(defender == "Mace Windu"){
 			console.log(defender + " is the defender on line 198");
 			if(defenderSelected > 1){
 
@@ -262,8 +259,12 @@ var attackButton;
 	}// end defender function
 
 	function ready(){
-		 $("#defender").append('<button id="attack">ATTACK</button');
-
+		
+		$("#defender").append('<button id="attack">ATTACK</button>');
+		
+		 
+		 $("#defender").append('<div id="info"></div>');
+		
 			$("#attack").on("click", function(){
 		
 			fight(character, defender);
@@ -273,13 +274,22 @@ var attackButton;
 	}
 
 	function fight(){
-			if(character == "vader" && defender == "dooku"){
+			$("#info").empty();
+
+			if(character == "Darth Vader" && defender == "Count Dooku"){
+
+				
+
 				if(defenderSelected >= 2){
 					vaderAttackPower = vaderAttackPower + 10;
 					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
-						console.log("Vader health points: " + vaderHealthPoints)
-						console.log(defender + " is dead.");
+
+						// testing 
+						vaderHealthPoints = vaderHealthPoints + dookuAttackPower;
+						$("#vaderHP").text(vaderHealthPoints);	
+
+						
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -288,17 +298,24 @@ var attackButton;
 
 				else{
 					vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
-					$("#vaderHP").text(vaderHealthPoints);
-					
+					$("#vaderHP").text(vaderHealthPoints);					
 				
 					dookuHealthPoints = dookuHealthPoints - vaderAttackPower;
 					$("#dookuHP").text(dookuHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					vaderAttackPower = vaderAttackPower + 10;
 					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
-						console.log("Vader health points: " + vaderHealthPoints)
-						console.log(defender + " is dead.");
+						
+						// testing 
+						vaderHealthPoints = vaderHealthPoints + dookuAttackPower;
+						$("#vaderHP").text(vaderHealthPoints);
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -307,7 +324,7 @@ var attackButton;
 				}
 				
 			}
-			if(character == "vader" && defender == "yoda"){
+			if(character == "Darth Vader" && defender == "Yoda"){
 				if(defenderSelected >= 2){
 					vaderAttackPower = vaderAttackPower + 10;
 					if (yodaHealthPoints <= 0){
@@ -326,9 +343,15 @@ var attackButton;
 					yodaHealthPoints = yodaHealthPoints - vaderAttackPower;
 					$("#yodaHP").text(yodaHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					vaderAttackPower = vaderAttackPower + 10;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -336,7 +359,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "vader" && defender == "mace"){
+			if(character == "Darth Vader" && defender == "Mace Windu"){
 
 				if(defenderSelected >= 2){
 					vaderAttackPower = vaderAttackPower + 10;
@@ -356,9 +379,16 @@ var attackButton;
 					maceHealthPoints = maceHealthPoints - vaderAttackPower;
 					$("#maceHP").text(maceHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					vaderAttackPower = vaderAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -366,7 +396,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "dooku" && defender == "vader"){
+			if(character == "Count Dooku" && defender == "Darth Vader"){
 				
 				if(defenderSelected >= 2){
 					dookuAttackPower = dookuAttackPower + 10;
@@ -386,9 +416,15 @@ var attackButton;
 					vaderHealthPoints = vaderHealthPoints - dookuAttackPower;
 					$("#vaderHP").text(vaderHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					dookuAttackPower = dookuAttackPower + 10;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -396,7 +432,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "dooku" && defender == "yoda"){
+			if(character == "Count Dooku" && defender == "Yoda"){
 				
 				if(defenderSelected >= 2){
 					dookuAttackPower = dookuAttackPower + 10;
@@ -416,9 +452,15 @@ var attackButton;
 					yodaHealthPoints = yodaHealthPoints - dookuAttackPower;
 					$("#yodaHP").text(yodaHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					dookuAttackPower = dookuAttackPower + 10;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -426,7 +468,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "dooku" && defender == "mace"){
+			if(character == "Count Dooku" && defender == "Mace Windu"){
 				
 				if(defenderSelected >= 2){
 					dookuAttackPower = dookuAttackPower + 10;
@@ -446,9 +488,15 @@ var attackButton;
 					maceHealthPoints = maceHealthPoints - dookuAttackPower;
 					$("#maceHP").text(maceHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					dookuAttackPower = dookuAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -456,7 +504,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "yoda" && defender == "vader"){
+			if(character == "Yoda" && defender == "Darth Vader"){
 				
 				if(defenderSelected >= 2){
 					yodaAttackPower = yodaAttackPower + 10;
@@ -476,9 +524,15 @@ var attackButton;
 					vaderHealthPoints = vaderHealthPoints - yodaAttackPower;
 					$("#vaderHP").text(vaderHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					yodaAttackPower = yodaAttackPower + 10;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -486,12 +540,13 @@ var attackButton;
 
 				}
 			}
-			if(character == "yoda" && defender == "dooku"){
+			if(character == "Yoda" && defender == "Count Dooku"){
 				
 				if(defenderSelected >= 2){
 					yodaAttackPower = yodaAttackPower + 10;
-					if (dookuHealthPoints <= 0){
-						vaderButton = $("#vader").detach();
+					if(dookuHealthPoints <= 0){
+						// console.log("check line 494");
+						dookuButton = $("#dooku").detach();
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -506,9 +561,15 @@ var attackButton;
 					dookuHealthPoints = dookuHealthPoints - yodaAttackPower;
 					$("#dookuHP").text(dookuHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					yodaAttackPower = yodaAttackPower + 10;
-					if (vaderHealthPoints <= 0){
+					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -516,7 +577,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "yoda" && defender == "mace"){
+			if(character == "Yoda" && defender == "Mace Windu"){
 				
 				if(defenderSelected >= 2){
 					yodaAttackPower = yodaAttackPower + 10;
@@ -536,9 +597,15 @@ var attackButton;
 					maceHealthPoints = maceHealthPoints - yodaAttackPower;
 					$("#maceHP").text(maceHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					yodaAttackPower = yodaAttackPower + 10;
 					if (maceHealthPoints <= 0){
 						maceButton = $("#mace").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -546,7 +613,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "mace" && defender == "vader"){
+			if(character == "Mace Windu" && defender == "Darth Vader"){
 				
 				if(defenderSelected >= 2){
 					maceAttackPower = maceAttackPower + 12;
@@ -566,9 +633,15 @@ var attackButton;
 					vaderHealthPoints = vaderHealthPoints - maceAttackPower;
 					$("#vaderHP").text(vaderHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					maceAttackPower = maceAttackPower + 12;
 					if (vaderHealthPoints <= 0){
 						vaderButton = $("#vader").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -576,7 +649,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "mace" && defender == "dooku"){
+			if(character == "Mace Windu" && defender == "Count Dooku"){
 				
 				if(defenderSelected >= 2){
 					maceAttackPower = maceAttackPower + 12;
@@ -596,9 +669,15 @@ var attackButton;
 					dookuHealthPoints = dookuHealthPoints - maceAttackPower;
 					$("#dookuHP").text(dookuHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					maceAttackPower = maceAttackPower + 12;
 					if (dookuHealthPoints <= 0){
 						dookuButton = $("#dooku").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
@@ -606,7 +685,7 @@ var attackButton;
 
 				}
 			}
-			if(character == "mace" && defender == "yoda"){
+			if(character == "Mace Windu" && defender == "Yoda"){
 				
 				if(defenderSelected >= 2){
 					maceAttackPower = maceAttackPower + 12;
@@ -626,9 +705,15 @@ var attackButton;
 					yodaHealthPoints = yodaHealthPoints - maceAttackPower;
 					$("#yodaHP").text(yodaHealthPoints);
 
+					$("#info").text("You attacked " + defender + " for " + vaderAttackPower + " damage.\n"+ defender +
+						" countered for " + dookuAttackPower);
+
 					maceAttackPower = maceAttackPower + 12;
 					if (yodaHealthPoints <= 0){
 						yodaButton = $("#yoda").detach();
+
+						$("#info").text("You killed " + defender + ".  The force is strong with you!");
+
 						defenderSelected = 2;
 						 attackButton = $("#attack").detach();
 						return;
